@@ -17,7 +17,7 @@ time.sleep(1)
 # Capture
 print("Packet capture is enabled")
 
-with pydivert.WinDivert("tcp.DstPort==443 and outbound") as w:
+with pydivert.WinDivert("tcp.DstPort==443 and outbound and and tcp.PayloadLength > 0") as w:
     for packet in w:
         if mode_frag=="split":
             if len(packet.payload) > s_p:
